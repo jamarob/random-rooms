@@ -16,10 +16,6 @@ export default function useSettings() {
     return (value: T) => setSettings({ ...settings, [key]: value })
   }
 
-  const presentStudents = settings.students.filter(
-    (student) => !settings.absentStudents.includes(student)
-  )
-
   const togglePresence = (student: string) => {
     setSettings({
       ...settings,
