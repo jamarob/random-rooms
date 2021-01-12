@@ -1,5 +1,4 @@
 export interface Settings {
-  course: string
   seed: string
   groups: number
   students: string[]
@@ -7,16 +6,9 @@ export interface Settings {
   rooms: string[]
 }
 
-export type Key =
-  | 'course'
-  | 'groups'
-  | 'seed'
-  | 'students'
-  | 'absentStudents'
-  | 'rooms'
+export type Key = 'groups' | 'seed' | 'students' | 'absentStudents' | 'rooms'
 
 export const initialSettings: Settings = {
-  course: '',
   seed: '',
   groups: 1,
   students: [],
