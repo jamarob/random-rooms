@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'
+import Button from '../common/Button'
 
 interface SetupProps {
   students: string[]
@@ -24,50 +25,48 @@ export default function Setup({
 
   return (
     <Main>
-      <section>
+      <section className="input-group">
         <h2>Students</h2>
-        <textarea
+        <Textarea
           rows={20}
           name="students"
           value={input.students}
           onChange={handleListChange}
-        ></textarea>
-        <br />
-        <button
+        ></Textarea>
+        <Button
           disabled={!studentsDirty}
           onClick={() => setInput({ ...input, students: join(students) })}
         >
           cancel
-        </button>
-        <button
+        </Button>
+        <Button
           disabled={!studentsDirty}
           onClick={() => onStudentsChange(split(input.students))}
         >
           save
-        </button>
+        </Button>
       </section>
 
-      <section>
+      <section className="input-group">
         <h2>Rooms</h2>
-        <textarea
+        <Textarea
           rows={20}
           name="rooms"
           value={input.rooms}
           onChange={handleListChange}
-        ></textarea>
-        <br />
-        <button
+        ></Textarea>
+        <Button
           disabled={!roomsDirty}
           onClick={() => setInput({ ...input, rooms: join(rooms) })}
         >
           cancel
-        </button>
-        <button
+        </Button>
+        <Button
           disabled={!roomsDirty}
           onClick={() => onRoomsChange(split(input.rooms))}
         >
           save
-        </button>
+        </Button>
       </section>
     </Main>
   )
@@ -88,12 +87,27 @@ function join(csv: string[]) {
   return csv.join('\n')
 }
 
+const Textarea = styled.textarea`
+  font-size: 1em;
+  font-family: inherit;
+  padding: 1px;
+  border: 1px solid white;
+  line-height: 1.1em;
+  color: var(--color-blue);
+`
+
 const Main = styled.main`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  place-items: center;
 
-  textarea {
-    padding: 8px;
-    line-height: 1.1em;
+  .input-group {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+
+    h2,
+    ${Textarea} {
+      grid-column: span 2;
+    }
   }
 `

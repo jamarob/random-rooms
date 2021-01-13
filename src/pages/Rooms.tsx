@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import seedrandom from 'seedrandom'
 import styled from 'styled-components/macro'
+import Button from '../common/Button'
 import { distribute, shuffle } from '../services/list'
 
 interface RoomsProps {
@@ -27,33 +28,33 @@ export default function Rooms({
     <Main>
       <section>
         <h2>Seed</h2>
-        <input
+        <Input
           type="text"
           value={seed}
           onChange={({ target }) => onSeedChange(target.value)}
         />
-        <button onClick={() => onSeedChange(new Date().toLocaleDateString())}>
+        <Button onClick={() => onSeedChange(new Date().toLocaleDateString())}>
           daily
-        </button>
-        <button onClick={() => onSeedChange(rng().toString().slice(2))}>
+        </Button>
+        <Button onClick={() => onSeedChange(rng().toString().slice(2))}>
           random
-        </button>
+        </Button>
       </section>
       <section>
         <h2>Number of Groups</h2>
-        <button
+        <Button
           disabled={groups === 1}
           onClick={() => onGroupsChange(groups - 1)}
         >
           less
-        </button>
-        <span> {groups} </span>
-        <button
+        </Button>
+        <span className="groups"> {groups} </span>
+        <Button
           disabled={groups === rooms.length}
           onClick={() => onGroupsChange(groups + 1)}
         >
           more
-        </button>
+        </Button>
       </section>
       <section>
         <h2>Rooms</h2>
@@ -86,14 +87,27 @@ function join(
 }
 
 const And = styled.span`
-  font-size: 1.2em;
-  color: gray;
+  font-size: 0.8em;
+  margin: 0 8px;
+  color: var(--color-orange);
 `
 
+const Input = styled.input`
+  padding: 8px;
+  font-size: 1em;
+  font-family: inherit;
+  border: 1px solid white;
+  color: var(--color-blue);
+`
 const Main = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: min-content;
+
+  .groups {
+    padding: 0 16px;
+    color: var(--color-orange);
+  }
 
   > :last-child {
     grid-column: span 2;
@@ -109,7 +123,11 @@ const Main = styled.main`
   }
 
   li {
-    border: 1px solid black;
+    b {
+      text-transform: uppercase;
+    }
+
+    border: 1px solid white;
     border-radius: 8px;
     padding: 16px;
     line-height: 1.2em;

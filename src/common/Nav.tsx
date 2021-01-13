@@ -20,18 +20,17 @@ const Nav = styled.nav`
 
   a {
     padding: 8px;
-    border: 1px solid black;
-    border-radius: 8px;
     text-decoration: none;
-    color: black;
+    color: white;
 
     &:visited {
-      color: black;
+      color: white;
     }
 
     &.active {
       color: white;
-      background: black;
+      font-weight: 600;
+      border-bottom: 2px solid var(--color-orange);
     }
   }
 `
