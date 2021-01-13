@@ -60,7 +60,7 @@ export default function Rooms({
         <ul>
           {studentGroups.map((group, index) => {
             return (
-              <li key={group.join()}>
+              <li key={rooms[index]}>
                 <b>{rooms[index]}</b>
                 <br /> {group.reduce(join, [])}
               </li>
@@ -81,7 +81,7 @@ function join(
   return [
     ...nodes,
     name,
-    index === array.length - 1 ? null : <And> &amp; </And>,
+    index === array.length - 1 ? null : <And key={name}> &amp; </And>,
   ]
 }
 
