@@ -23,9 +23,10 @@ const Nav = styled.nav`
     border: 1px solid black;
     border-radius: 8px;
     text-decoration: none;
+    color: black;
 
     &:visited {
-      color: inherit;
+      color: black;
     }
 
     &.active {
