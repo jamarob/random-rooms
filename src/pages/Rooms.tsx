@@ -62,7 +62,7 @@ export default function Rooms({
           {studentGroups.map((group, index) => {
             return (
               <li key={rooms[index]}>
-                <b>{rooms[index]}</b>
+                <RoomNameStyled>{rooms[index]}</RoomNameStyled>
                 <br /> {group.reduce(join, [])}
               </li>
             )
@@ -85,6 +85,10 @@ function join(
     index === array.length - 1 ? null : <And key={name}> &amp; </And>,
   ]
 }
+
+const RoomNameStyled = styled.b`
+  color: var(--color-orange);
+`
 
 const And = styled.span`
   font-size: 0.8em;
