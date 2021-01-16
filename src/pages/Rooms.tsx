@@ -62,7 +62,7 @@ export default function Rooms({
           {studentGroups.map((group, index) => {
             return (
               <li key={rooms[index]}>
-                <RoomNameStyled>{rooms[index]}</RoomNameStyled>
+                <RoomName>{rooms[index]}</RoomName>
                 <br /> {group.reduce(join, [])}
               </li>
             )
