@@ -86,7 +86,7 @@ function join(
   ]
 }
 
-const RoomNameStyled = styled.b`
+const RoomName = styled.span`
   color: var(--color-orange);
 `
 
