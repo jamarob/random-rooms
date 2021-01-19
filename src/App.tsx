@@ -6,7 +6,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import Rooms from './pages/Rooms'
+import Home from './pages/Home'
 import Presence from './pages/Presence'
 import Course from './pages/Course'
 import styled from 'styled-components'
@@ -22,7 +22,7 @@ export default function App() {
           <Route exact path="/">
             {(settings.rooms.length === 0 ||
               settings.students.length === 0) && <Redirect to="/course" />}
-            <Rooms
+            <Home
               students={settings.students.filter(
                 (student) => !settings.absentStudents.includes(student)
               )}

@@ -5,7 +5,7 @@ export default function AppHeader() {
   return (
     <Nav>
       <NavLink exact to="/">
-        Rooms
+        Home
       </NavLink>
       <NavLink to="/presence">Presence</NavLink>
       <NavLink to="/course">Course</NavLink>

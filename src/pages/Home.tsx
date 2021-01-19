@@ -13,7 +13,7 @@ interface RoomsProps {
   onGroupsChange: (groups: number) => void
 }
 
-export default function Rooms({
+export default function Home({
   rooms,
   students,
   seed,
