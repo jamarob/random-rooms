@@ -32,7 +32,7 @@ export default function Setup({
           name="students"
           value={input.students}
           onChange={handleListChange}
-        ></Textarea>
+        />
         <Button
           disabled={!studentsDirty}
           onClick={() => setInput({ ...input, students: join(students) })}
@@ -54,7 +54,7 @@ export default function Setup({
           name="rooms"
           value={input.rooms}
           onChange={handleListChange}
-        ></Textarea>
+        />
         <Button
           disabled={!roomsDirty}
           onClick={() => setInput({ ...input, rooms: join(rooms) })}
