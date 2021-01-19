@@ -4,7 +4,7 @@ import Button from '../common/Button'
 import Rooms from '../common/Rooms'
 import { distribute, shuffle } from '../services/list'
 
-interface RoomsProps {
+interface HomeProps {
   rooms: string[]
   students: string[]
   seed: string
@@ -20,7 +20,7 @@ export default function Home({
   onSeedChange,
   groups,
   onGroupsChange,
-}: RoomsProps) {
+}: HomeProps) {
   const rng = seedrandom(seed)
   const studentGroups = distribute(shuffle(seed, students), groups)
 
