@@ -10,6 +10,7 @@ import Home from './pages/Home'
 import Presence from './pages/Presence'
 import Course from './pages/Course'
 import styled from 'styled-components'
+import Share from './pages/Share'
 
 export default function App() {
   const { settings, update, togglePresence } = useSettings()
@@ -17,11 +18,11 @@ export default function App() {
   return (
     <Router>
       <PageLayout>
-        <Nav />
         <Switch>
           <Route exact path="/">
             {(settings.rooms.length === 0 ||
               settings.students.length === 0) && <Redirect to="/course" />}
+            <Nav />
             <Home
               students={settings.students.filter(
                 (student) => !settings.absentStudents.includes(student)
@@ -36,6 +37,7 @@ export default function App() {
           <Route exact path="/presence">
             {(settings.rooms.length === 0 ||
               settings.students.length === 0) && <Redirect to="/course" />}
+            <Nav />
             <Presence
               students={settings.students}
               absentStudents={settings.absentStudents}
@@ -43,12 +45,16 @@ export default function App() {
             />
           </Route>
           <Route exact path="/course">
+            <Nav />
             <Course
               students={settings.students}
               onStudentsChange={update('students')}
               rooms={settings.rooms}
               onRoomsChange={update('rooms')}
             />
+          </Route>
+          <Route path="/share">
+            <Share />
           </Route>
         </Switch>
       </PageLayout>

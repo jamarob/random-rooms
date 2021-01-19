@@ -8,7 +8,7 @@ interface RoomsProps {
 
 export default function Rooms({ rooms, groups }: RoomsProps) {
   return (
-    <ul>
+    <List>
       {groups.map((group, index) => {
         return (
           <li key={rooms[index]}>
@@ -17,7 +17,7 @@ export default function Rooms({ rooms, groups }: RoomsProps) {
           </li>
         )
       })}
-    </ul>
+    </List>
   )
 }
 
@@ -33,6 +33,26 @@ function join(
     index === array.length - 1 ? null : <And key={name}> &amp; </And>,
   ]
 }
+
+const List = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
+  padding: 0 16px;
+  list-style: none;
+  text-align: center;
+
+  > li {
+    b {
+      text-transform: uppercase;
+    }
+
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 16px;
+    line-height: 1.2em;
+  }
+`
 
 const RoomName = styled.span`
   color: var(--color-orange);

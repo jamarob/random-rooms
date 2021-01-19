@@ -2,6 +2,7 @@ import seedrandom from 'seedrandom'
 import styled from 'styled-components/macro'
 import Button from '../common/Button'
 import Rooms from '../common/Rooms'
+import ShareableLink from '../common/ShareableLink'
 import { distribute, shuffle } from '../services/list'
 
 interface HomeProps {
@@ -58,6 +59,7 @@ export default function Home({
       </section>
       <section>
         <h2>Rooms</h2>
+        <ShareableLink rooms={rooms} groups={studentGroups} />
         <Rooms rooms={rooms} groups={studentGroups} />
       </section>
     </Main>
@@ -83,25 +85,5 @@ const Main = styled.main`
 
   > :last-child {
     grid-column: span 2;
-  }
-
-  ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 16px;
-    padding: 0 16px;
-    list-style: none;
-    text-align: center;
-  }
-
-  li {
-    b {
-      text-transform: uppercase;
-    }
-
-    border: 1px solid white;
-    border-radius: 8px;
-    padding: 16px;
-    line-height: 1.2em;
   }
 `
