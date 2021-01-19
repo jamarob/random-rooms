@@ -1,7 +1,7 @@
-import { ReactNode } from 'react'
 import seedrandom from 'seedrandom'
 import styled from 'styled-components/macro'
 import Button from '../common/Button'
+import Rooms from '../common/Rooms'
 import { distribute, shuffle } from '../services/list'
 
 interface RoomsProps {
@@ -58,43 +58,11 @@ export default function Home({
       </section>
       <section>
         <h2>Rooms</h2>
-        <ul>
-          {studentGroups.map((group, index) => {
-            return (
-              <li key={rooms[index]}>
-                <RoomName>{rooms[index]}</RoomName>
-                <br /> {group.reduce(join, [])}
-              </li>
-            )
-          })}
-        </ul>
+        <Rooms rooms={rooms} groups={studentGroups} />
       </section>
     </Main>
   )
 }
-
-function join(
-  nodes: ReactNode[],
-  name: string,
-  index: number,
-  array: string[]
-): ReactNode[] {
-  return [
-    ...nodes,
-    name,
-    index === array.length - 1 ? null : <And key={name}> &amp; </And>,
-  ]
-}
-
-const RoomName = styled.span`
-  color: var(--color-orange);
-`
-
-const And = styled.span`
-  font-size: 0.8em;
-  margin: 0 8px;
-  color: var(--color-orange);
-`
 
 const Input = styled.input`
   padding: 8px;
