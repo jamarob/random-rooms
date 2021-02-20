@@ -13,43 +13,49 @@ import styled from 'styled-components'
 import Share from './pages/Share'
 
 export default function App() {
-  const { settings, update, togglePresence } = useSettings()
+  const {
+    settings: { students, absentStudents, rooms, groups, seed },
+    update,
+    togglePresence,
+  } = useSettings()
+
+  const hasRoomsAndStudents = rooms.length !== 0 && students.length !== 0
+
+  const presentStudents = students.filter(
+    (student) => !absentStudents.includes(student)
+  )
 
   return (
     <Router>
       <PageLayout>
         <Switch>
           <Route exact path="/">
-            {(settings.rooms.length === 0 ||
-              settings.students.length === 0) && <Redirect to="/course" />}
+            {!hasRoomsAndStudents && <Redirect to="/course" />}
             <Nav />
             <Home
-              students={settings.students.filter(
-                (student) => !settings.absentStudents.includes(student)
-              )}
-              rooms={settings.rooms}
-              seed={settings.seed}
-              groups={settings.groups}
+              students={presentStudents}
+              rooms={rooms}
+              seed={seed}
+              groups={groups}
               onSeedChange={update('seed')}
               onGroupsChange={update('groups')}
             />
           </Route>
           <Route exact path="/presence">
-            {(settings.rooms.length === 0 ||
-              settings.students.length === 0) && <Redirect to="/course" />}
+            {!hasRoomsAndStudents && <Redirect to="/course" />}
             <Nav />
             <Presence
-              students={settings.students}
-              absentStudents={settings.absentStudents}
+              students={students}
+              absentStudents={absentStudents}
               togglePresence={togglePresence}
             />
           </Route>
           <Route exact path="/course">
             <Nav />
             <Course
-              students={settings.students}
+              students={students}
               onStudentsChange={update('students')}
-              rooms={settings.rooms}
+              rooms={rooms}
               onRoomsChange={update('rooms')}
             />
           </Route>
