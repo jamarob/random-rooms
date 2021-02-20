@@ -23,6 +23,15 @@ export default function Setup({
   const studentsDirty = input.students !== join(students)
   const roomsDirty = input.rooms !== join(rooms)
 
+  const handleListChange = ({ target }: ChangeEvent<HTMLTextAreaElement>) =>
+    setInput({ ...input, [target.name]: target.value })
+
+  const resetStudents = () => setInput({ ...input, students: join(students) })
+  const saveStudents = () => onStudentsChange(split(input.students))
+
+  const resetRooms = () => setInput({ ...input, rooms: join(rooms) })
+  const saveRooms = () => onRoomsChange(split(input.rooms))
+
   return (
     <Main>
       <section className="input-group">
@@ -33,16 +42,10 @@ export default function Setup({
           value={input.students}
           onChange={handleListChange}
         />
-        <Button
-          disabled={!studentsDirty}
-          onClick={() => setInput({ ...input, students: join(students) })}
-        >
+        <Button disabled={!studentsDirty} onClick={resetStudents}>
           cancel
         </Button>
-        <Button
-          disabled={!studentsDirty}
-          onClick={() => onStudentsChange(split(input.students))}
-        >
+        <Button disabled={!studentsDirty} onClick={saveStudents}>
           save
         </Button>
       </section>
@@ -55,36 +58,26 @@ export default function Setup({
           value={input.rooms}
           onChange={handleListChange}
         />
-        <Button
-          disabled={!roomsDirty}
-          onClick={() => setInput({ ...input, rooms: join(rooms) })}
-        >
+        <Button disabled={!roomsDirty} onClick={resetRooms}>
           cancel
         </Button>
-        <Button
-          disabled={!roomsDirty}
-          onClick={() => onRoomsChange(split(input.rooms))}
-        >
+        <Button disabled={!roomsDirty} onClick={saveRooms}>
           save
         </Button>
       </section>
     </Main>
   )
-
-  function handleListChange({ target }: ChangeEvent<HTMLTextAreaElement>) {
-    setInput({ ...input, [target.name]: target.value })
-  }
 }
 
-function split(csv: string) {
-  return csv
+function split(linesString: string) {
+  return linesString
     .split('\n')
     .map((val) => val.trim())
     .filter((val) => val !== '')
 }
 
-function join(csv: string[]) {
-  return csv.join('\n')
+function join(lines: string[]) {
+  return lines.join('\n')
 }
 
 const Textarea = styled.textarea`
