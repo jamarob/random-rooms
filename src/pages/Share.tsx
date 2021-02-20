@@ -24,7 +24,7 @@ export default function Share() {
 
   return (
     <section>
-      <h2>Rooms</h2>
+      <h1>Rooms</h1>
       <Rooms rooms={rooms} groups={groups} />
     </section>
   )
