@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import RoomsList from '../common/RoomsList'
+import RoomsList from '../components/RoomsList'
 
 export default function Share() {
   const { search } = useLocation()

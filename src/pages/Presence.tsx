@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import StudentList from '../common/StudentList'
+import StudentList from '../components/StudentList'
 
 interface Props {
   students: string[]

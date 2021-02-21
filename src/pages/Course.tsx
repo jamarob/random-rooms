@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ListInput from '../common/ListInput'
+import ListInput from '../components/ListInput'
 
 interface SetupProps {
   students: string[]

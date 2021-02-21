@@ -1,8 +1,8 @@
 import seedrandom from 'seedrandom'
 import styled from 'styled-components/macro'
-import Groups from '../common/Groups'
-import Rooms from '../common/Rooms'
-import Seed from '../common/Seed'
+import Groups from '../components/Groups'
+import Rooms from '../components/Rooms'
+import Seed from '../components/Seed'
 import { distribute, shuffle } from '../services/list'
 
 interface Props {

@@ -1,4 +1,4 @@
-import Nav from './common/Nav'
+import Nav from './components/Nav'
 import useSettings from './hooks/useSettings'
 import {
   BrowserRouter as Router,
