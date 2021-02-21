@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'
+import useList from '../hooks/useList'
 import Button from './Button'
 
 interface Props {
@@ -7,20 +7,14 @@ interface Props {
   onChange: (items: string[]) => void
 }
 
-export default function ListInput({ items, onChange }: Props) {
-  const [input, setInput] = useState(join(items))
-
-  const handleChange = ({ target }: ChangeEvent<HTMLTextAreaElement>) =>
-    setInput(target.value)
-
-  const handleSave = () => onChange(split(input))
-  const handleReset = () => setInput(join(items))
-
-  const isDirty = input !== join(items)
+export default function ListInput(props: Props) {
+  const { value, handleChange, handleSave, handleReset, isDirty } = useList(
+    props
+  )
 
   return (
     <Wrapper>
-      <Textarea rows={20} value={input} onChange={handleChange} />
+      <Textarea rows={20} value={value} onChange={handleChange} />
       <Button disabled={!isDirty} onClick={handleReset}>
         cancel
       </Button>
@@ -29,17 +23,6 @@ export default function ListInput({ items, onChange }: Props) {
       </Button>
     </Wrapper>
   )
-}
-
-function split(linesString: string) {
-  return linesString
-    .split('\n')
-    .map((val) => val.trim())
-    .filter((val) => val !== '')
-}
-
-function join(lines: string[]) {
-  return lines.join('\n')
 }
 
 const Textarea = styled.textarea`
