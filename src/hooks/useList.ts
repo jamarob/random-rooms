@@ -14,9 +14,9 @@ export default function useList({ items, onChange }: Props) {
   const handleSave = () => onChange(split(value))
   const handleReset = () => setValue(join(items))
 
-  const isDirty = value !== join(items)
+  const hasUnsavedChanges = value !== join(items)
 
-  return { value, handleChange, handleSave, handleReset, isDirty }
+  return { value, handleChange, handleSave, handleReset, hasUnsavedChanges }
 }
 
 function split(linesString: string) {
