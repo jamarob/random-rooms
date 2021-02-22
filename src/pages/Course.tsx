@@ -25,6 +25,7 @@ export default function Setup({
         <h2>Rooms</h2>
         <ListInput items={rooms} onChange={onRoomsChange} />
       </section>
+      <Hint>Separate names by newlines or commas.</Hint>
     </Main>
   )
 }
@@ -33,4 +34,9 @@ const Main = styled.main`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
+  grid-gap: 24px;
+`
+const Hint = styled.small`
+  grid-column: span 2;
+  font-style: italic;
 `
