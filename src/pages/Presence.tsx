@@ -1,16 +1,17 @@
 import styled from 'styled-components'
+import StudentList from '../components/StudentList'
 
-interface StudentsProps {
+interface Props {
   students: string[]
   absentStudents: string[]
   togglePresence: (student: string) => void
 }
 
-export default function Students({
+export default function Presence({
   students,
   absentStudents,
   togglePresence,
-}: StudentsProps) {
+}: Props) {
   const presentStudents = students.filter(
     (student) => !absentStudents.includes(student)
   )
@@ -19,35 +20,18 @@ export default function Students({
     <Main>
       <section>
         <h2>Present</h2>
-        <ul>
-          {presentStudents.map((student) => {
-            return (
-              <li
-                className="present"
-                key={student}
-                onClick={() => togglePresence(student)}
-              >
-                {student}
-              </li>
-            )
-          })}
-        </ul>
+        <StudentList
+          students={presentStudents}
+          onStudentClick={togglePresence}
+        />
       </section>
       <section>
         <h2>Absent</h2>
-        <ul className="absent">
-          {absentStudents.map((student) => {
-            return (
-              <li
-                className="absent"
-                key={student}
-                onClick={() => togglePresence(student)}
-              >
-                {student}
-              </li>
-            )
-          })}
-        </ul>
+        <StudentList
+          absentList
+          students={absentStudents}
+          onStudentClick={togglePresence}
+        />
       </section>
     </Main>
   )
@@ -56,31 +40,4 @@ export default function Students({
 const Main = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    padding: 8px;
-  }
-
-  li:hover {
-    font-size: 1.1em;
-  }
-
-  li.present:hover {
-    ::before,
-    ::after {
-      content: ' 🤒 ';
-    }
-  }
-
-  li.absent:hover {
-    ::before,
-    ::after {
-      content: ' 😌 ';
-    }
-  }
 `

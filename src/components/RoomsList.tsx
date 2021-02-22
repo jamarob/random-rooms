@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components/macro'
 
-interface RoomsProps {
+interface Props {
   rooms: string[]
   groups: string[][]
 }
 
-export default function Rooms({ rooms, groups }: RoomsProps) {
+export default function RoomsList({ rooms, groups }: Props) {
   return (
     <List>
       {groups.map((group, index) => {
