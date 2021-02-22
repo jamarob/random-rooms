@@ -11,7 +11,11 @@ export default function useList({ items, onChange }: Props) {
   const handleChange = ({ target }: ChangeEvent<HTMLTextAreaElement>) =>
     setValue(target.value)
 
-  const handleSave = () => onChange(split(value))
+  const handleSave = () => {
+    const splitted = split(value)
+    onChange(splitted)
+    setValue(join(splitted))
+  }
   const handleReset = () => setValue(join(items))
 
   const hasUnsavedChanges = value !== join(items)
@@ -21,7 +25,7 @@ export default function useList({ items, onChange }: Props) {
 
 function split(linesString: string) {
   return linesString
-    .split('\n')
+    .split(/[\n,]/)
     .map((lines) => lines.trim())
     .filter((val) => val !== '')
 }
