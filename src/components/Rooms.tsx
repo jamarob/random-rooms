@@ -1,5 +1,5 @@
 import RoomsList from './RoomsList'
-import ShareableLink from './ShareableLink'
+import ShareableLinks from './ShareableLinks'
 
 interface Props {
   rooms: string[]
@@ -10,7 +10,7 @@ export default function Rooms({ rooms, studentGroups }: Props) {
   return (
     <section>
       <h2>Rooms</h2>
-      <ShareableLink rooms={rooms} groups={studentGroups} />
+      <ShareableLinks rooms={rooms} groups={studentGroups} />
       <RoomsList rooms={rooms} groups={studentGroups} />
     </section>
   )
