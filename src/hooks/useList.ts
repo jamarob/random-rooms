@@ -22,7 +22,7 @@ export default function useList({ items, onChange }: Props) {
 function split(linesString: string) {
   return linesString
     .split('\n')
-    .map((val) => val.trim())
+    .map((lines) => lines.trim())
     .filter((val) => val !== '')
 }
 
