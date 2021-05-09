@@ -8,7 +8,7 @@ interface ShareableLinkProps {
 
 export default function ShareableLinks({ rooms, groups }: ShareableLinkProps) {
 
-  const [showMessage, setShowMessage] = useState(false)
+  const [showCopySuccessMessage, setShowCopySuccessMessage] = useState(false)
 
   const roomString = toUriEncodedJson(rooms)
   const groupsString = toUriEncodedJson(groups)
@@ -18,9 +18,9 @@ export default function ShareableLinks({ rooms, groups }: ShareableLinkProps) {
   const imageUrlClipboard = window.location.host + '/' + imageUrl
 
   const activateSuccessMessage = () => {
-    setShowMessage(true)
+    setShowCopySuccessMessage(true)
     setTimeout(() => {
-      setShowMessage(false)
+      setShowCopySuccessMessage(false)
     }, 2000)
   }
 
@@ -42,7 +42,7 @@ export default function ShareableLinks({ rooms, groups }: ShareableLinkProps) {
         >
           🔗
         </Button>
-        {showMessage && <SuccessMessage>✅ copied</SuccessMessage>}
+        {showCopySuccessMessage && <SuccessMessage>✅ copied</SuccessMessage>}
       </div>
     </Wrapper>
   )
