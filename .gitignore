@@ -1,4 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# IntelliJ
+.idea
+*.iml
+
 
 # dependencies
 /node_modules
