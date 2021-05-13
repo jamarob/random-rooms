@@ -15,7 +15,7 @@ export default function ShareableLinks({ rooms, groups }: ShareableLinkProps) {
   const query = `?rooms=${roomString}&groups=${groupsString}`
   const appUrl = 'share' + query
   const imageUrl = 'api/image' + query
-  const imageUrlClipboard = window.location.host + '/' + imageUrl
+  const imageUrlClipboard = window.location + imageUrl
 
   const activateSuccessMessage = () => {
     setShowCopySuccessMessage(true)
