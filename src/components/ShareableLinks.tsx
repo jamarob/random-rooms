@@ -40,7 +40,7 @@ export default function ShareableLinks({ rooms, groups }: ShareableLinkProps) {
         <Button
           onClick={handleCopyClick}
         >
-          🔗
+          copy
         </Button>
         {showCopySuccessMessage && <SuccessMessage>✅ copied</SuccessMessage>}
       </div>
@@ -53,9 +53,7 @@ function toUriEncodedJson(obj: any) {
 }
 
 const Button = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
+  margin-left: 12px;
 `
 
 const SuccessMessage = styled.p`
